@@ -1,0 +1,90 @@
+body {
+    background: linear-gradient(to bottom, #1DB954, #191414);
+    height: 100vh;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+button {
+    background-color: inherit;
+    color: inherit;
+    border: none;
+}
+
+#abaixo-capa {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1em 0 1em 0;
+}
+
+#botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.botao {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.botao-navigate {
+    font-size: 3.5em;
+}
+
+.botao-grande {
+    font-size: 4em;
+}
+
+#capa {
+    width: 350px;
+    height: 350px;
+}
+
+#titulo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1em 0 1em 0;
+}
+ 
+#musica {
+    font-size: 1.7em;
+    font-weight: bolder;
+}
+
+.cor-fraca {
+    color: #88999C;
+}
+
+.bi-heart-fill {
+    color: rgba(252, 35, 35, 0.671);
+}
+
+#barra {
+    background-color: #88999C;
+    height: 3px;
+    width: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+#progresso {
+    --progresso: 0%;
+    background-color: white;
+    height: 3px;
+    width: var(--progresso);
+    border-radius: 15px;
+}   
+
+#barra-clicar {
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+

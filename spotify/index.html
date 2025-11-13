@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="container">
+        <h4 id="titulo">Só as Melhores</h4>
+        <img id="capa" alt="imagem da musica">
+        <audio id="audio" alt="som-musica"></audio>
+        <div id="abaixo-capa">
+            <div id="info">
+                <div id="musica">Nome da Música</div>
+                <div id="banda" class="cor-fraca">Nome da Banda</div>
+            </div>
+            <button id="like" class="botao cor-fraca" onclick="toggleLike()"><i class="bi bi-heart"></i></button>
+        </div>
+        <div id="barra-clicar">
+            <div id="barra">
+                <div id="progresso"></div>  
+            </div> 
+        </div>
+        <div id="botoes">
+            <button id="shuffle" class="botao"><i class="bi bi-shuffle" onclick="shuffleBotao()"></i></button>
+            <button id="previous" class="botao botao-navigate" onclick="musicaAnterior()"><i class="bi bi-skip-start-fill"></i></button>
+            <button id="play" class="botao botao-grande" onclick="togglePlayPause()"><i class="bi bi-play-circle-fill"></i></button>
+            <button id="next" class="botao botao-navigate" onclick="proximaMusica()"><i class="bi bi-skip-end-fill"></i></button>
+            <button id="repeat" class="botao"><i class="bi bi-repeat"></i></button>
+        </div> 
+    </div>  
+    <script src="script.js"></script>
+</body>
+</html>

@@ -88,3 +88,7 @@ button {
     cursor: pointer;
 }
 
+.botao-ativo {
+    color: rgb(47, 126, 47)
+}
+

@@ -2,8 +2,8 @@
 /* Const é uma constante que nunca vai mudar
     outra opção é a let que no caso pode mudar */
 
-const nomeMusica = document.getElementById("musica"); // pega o elemento do html com id musica
-const nomeBanda = document.getElementById("banda");
+const nomeMusica = document.getElementById("musica"); // pega o elemento do html pelo id (musica)
+const nomeBanda = document.getElementById("banda"); 
 const capa = document.getElementById("capa");
 const musica = document.getElementById("audio");
 const play = document.getElementById("play");
@@ -11,10 +11,10 @@ const next = document.getElementById("next");
 const previous = document.getElementById("previous");
 const barra = document.getElementById("progresso");
 const barraClicar = document.getElementById("barra-clicar");
-const shuffle = document.getElementById("shuffle");
+const shuffleButton = document.getElementById("shuffle");
 const like = document.getElementById("like");
 
-const numb = {  //objeto musica
+const numb = {  //objeto musica  
     nome: "Numb",
     banda: "Linkin Park",
     arquivo: "numb"
@@ -44,7 +44,7 @@ const Decode = {
     arquivo: "decode"
 };
 
-/* let é pra quando vai precisar mudar */
+/* let é pra quando vai precisar mudar  */
 let isPlaying = false;
 const playlist = [numb, voices, LostInHollywood, EmptinessMachine, Decode];
 let shuffledPlaylist = [...playlist];
@@ -54,7 +54,7 @@ let isShuffled = false;
 
 
 /* Função para tocar a música, pega constante
-    musica e cria uma lista de ações, no caso de play */
+    musica e cria uma lista de ações, no caso de play  */
 
 function playSong() {
     play.querySelector(".bi").classList.remove("bi-play-circle-fill"); // remove a class bi-play-circle-fill
@@ -64,10 +64,8 @@ function playSong() {
 }
 
 /* queryselector faz uma busca dentro do elementro, no caso o id é o play e 
-    nele só tem duas class a bi e bi-play-circle-fill, ele busca a primeira no caso 
-    
+    nele só tem duas class a bi e bi-play-circle-fill, ele busca a primeira no caso
 */
-
 
 function pauseSong() {
     play.querySelector(".bi").classList.add("bi-play-circle-fill"); // adiciona a class bi-play-circle-fill
@@ -75,7 +73,8 @@ function pauseSong() {
     musica.pause();
     isPlaying = false;
 }
-function togglePlayPause() { // função para alternar entre play e pause
+
+function togglePlayPause() { // função para alternar entre play e pause 
     if(isPlaying === true) {
         pauseSong();
     } else {
@@ -83,9 +82,8 @@ function togglePlayPause() { // função para alternar entre play e pause
     }
 }
 
-
-function iniciarMusica() { // função para iniciar a música
-    capa.src = `img/${shuffledPlaylist[index].arquivo}.jpeg`; // atualiza a capa da música
+function iniciarMusica() { // função para iniciar a música e trazer os arquivos para o html dinamicamente
+    capa.src = `img/${shuffledPlaylist[index].arquivo}.jpeg`; 
     nomeMusica.innerText = shuffledPlaylist[index].nome;
     nomeBanda.innerText = shuffledPlaylist[index].banda;
     musica.src = `songs/${shuffledPlaylist[index].arquivo}.mp4`;
@@ -127,18 +125,27 @@ function pularPara(event) { // função para pular para uma posição na música
 }
 
 function shuffleArray(preShuffleArray) {
-    const tamanho = shuffledPlaylist.length;
+    const tamanho = preShuffleArray.length;
     let posicacao = tamanho - 1;
     while(posicacao > 0) {
-        Math.random();
+        let randomIndex = Math.floor(Math.random()* tamanho); // gera um número aleatório entre 0 e tamanho, tira os decimais com floor
+        let aux = preShuffleArray[posicacao];
+        preShuffleArray[posicacao] = preShuffleArray[randomIndex];
+        preShuffleArray[randomIndex] = aux;
+        posicacao -= 1;
     }
-
 }
 
-function shuffleBotao() {
+function shuffleButtonClicked() {
     if(isShuffled === false) {
         isShuffled = true;
-        shuffleArray();
+        shuffleArray(shuffledPlaylist);
+        shuffleButton.classList.add("botao-ativo");
+    }
+    else {
+        isShuffled = false;
+        shuffledPlaylist = [...playlist];
+        shuffleButton.classList.remove("botao-ativo");
     }
 }
 
@@ -165,9 +172,11 @@ function toggleLike() {
 
 iniciarMusica(); // inicia a música
 
-musica.addEventListener("timeupdate", atualizaProgresso); // adiciona o evento de atualizar a barra de progresso
+musica.addEventListener("timeupdate", atualizaProgresso); // adiciona o evento de timeupdate e recebe a função para atualizar a barra de progresso 
 
-barraClicar.addEventListener("click", pularPara); // adiciona o evento de pular para uma posição na música
+barraClicar.addEventListener("click", pularPara); // adiciona o evento de click e recebe a função de pular para uma posição na música
+
+
 
 /* adiciona a capacidade de receber um evento, no caso click 
     e o que fazer quando clicar ativa a função playSong que é dar play na musica */

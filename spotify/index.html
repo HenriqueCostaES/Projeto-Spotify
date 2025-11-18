@@ -18,21 +18,26 @@
                 <div id="musica">Nome da Música</div>
                 <div id="banda" class="cor-fraca">Nome da Banda</div>
             </div>
-            <button id="like" class="botao cor-fraca" onclick="toggleLike()"><i class="bi bi-heart"></i></button>
+            <button id="like" class="botao cor-fraca" onclick="likeButtonClicked()"><i class="bi bi-heart"></i></button>
         </div>
         <div id="barra-clicar">
             <div id="barra">
                 <div id="progresso"></div>  
             </div> 
+            <div id="time-box">
+                <div id="song-time">00:00</div>
+                <div id="total-time">00:00</div>
+            </div>
         </div>
         <div id="botoes">
             <button id="shuffle" class="botao"><i class="bi bi-shuffle" onclick="shuffleButtonClicked()"></i></button>
             <button id="previous" class="botao botao-navigate" onclick="musicaAnterior()"><i class="bi bi-skip-start-fill"></i></button>
             <button id="play" class="botao botao-grande" onclick="togglePlayPause()"><i class="bi bi-play-circle-fill"></i></button>
             <button id="next" class="botao botao-navigate" onclick="proximaMusica()"><i class="bi bi-skip-end-fill"></i></button>
-            <button id="repeat" class="botao"><i class="bi bi-repeat"></i></button>
+            <button id="repeat" class="botao"><i class="bi bi-repeat" onclick="repeatButtonClicked()"></i></button>
         </div> 
     </div>  
     <script src="script.js"></script>
 </body>
 </html>
+

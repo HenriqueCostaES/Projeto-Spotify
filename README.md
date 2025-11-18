@@ -1,47 +1,38 @@
-🎧 Player de Música estilo Spotify
+# 🎧 Player de Música — Estilo Spotify
 
-Um player de música desenvolvido com HTML, CSS e JavaScript, inspirado no visual e nas funcionalidades do Spotify.
-Possui controles de reprodução, barra de progresso interativa, playlist dinâmica, shuffle, repeat e sistema de likes salvo no localStorage.
+Um player de música moderno, leve e totalmente construído com **HTML**, **CSS** e **JavaScript**.
+Inspirado na interface do Spotify, o projeto oferece uma experiência limpa e funcional, com capa da música, botões interativos, progresso animado e controle completo da playlist.
 
-🚀 Funcionalidades
-🎵 Reprodução de música
+---
 
-Play / Pause
+## ✨ Destaques do Projeto
 
-Próxima música
+* 🎵 **Reprodução completa** (play, pause, next, previous)
+* 🔀 **Shuffle** com embaralhamento real da playlist
+* 🔁 **Repeat** para repetir a faixa atual
+* ❤️ **Sistema de like** salvo no *localStorage*
+* 🎚️ **Barra de progresso clicável**
+* ⏱️ **Exibição de tempo atual e total da música**
+* 🖼️ **Capa, nome da música e banda dinâmicos**
+* 🎨 **Design inspirado no Spotify**, com gradient icônico
+* 📦 Nenhum framework JS — apenas **JavaScript puro (vanilla)**
 
-Música anterior
+---
 
-Reprodução contínua (repeat)
+## 🛠️ Tecnologias Utilizadas
 
-Reprodução aleatória (shuffle)
+* **HTML5**
+* **CSS3 (vanilla)**
+* **JavaScript puro**
+* **Bootstrap Icons**
+* **localStorage**
 
-🎚️ Interface completa
+---
 
-Capa da música
+## 📁 Estrutura de Diretórios
 
-Nome da música e da banda
-
-Ícone de like que alterna entre vazio e preenchido
-
-Barra de progresso com clique para avançar/retroceder
-
-Temporizador atual e total da música
-
-💾 Persistência de dados
-
-Likes das músicas são salvos no localStorage, mantendo preferências mesmo após fechar a página.
-
-🎨 Estilo inspirado no Spotify
-
-Gradiente verde → preto
-
-Ícones do Bootstrap Icons
-
-Layout responsivo e organizado
-
-📁 Estrutura de Diretórios
-/projeto
+```
+projeto/
 │── index.html
 │── style.css
 │── script.js
@@ -49,145 +40,233 @@ Layout responsivo e organizado
 ├── img/
 │   ├── numb.jpeg
 │   ├── voices.jpeg
-│   ├── lostinhollywood.jpeg
-│   ├── emptinessmachine.jpeg
-│   └── decode.jpeg
+│   ├── ...
 │
 └── songs/
     ├── numb.mp4
     ├── voices.mp4
-    ├── lostinhollywood.mp4
-    ├── emptinessmachine.mp4
-    └── decode.mp4
+    ├── ...
+```
 
-🛠️ Tecnologias Utilizadas
+---
 
-HTML5
+## 🔧 Como rodar o projeto
 
-CSS3
+1. Baixe ou clone o repositório
+2. Mantenha a estrutura de pastas exatamente como está
+3. Coloque suas músicas em `/songs` e capas em `/img`
+4. Abra o arquivo **index.html** no navegador
+5. Pronto! Seu player estará funcionando 🎶
 
-JavaScript (Vanilla)
+---
 
-Bootstrap Icons
+## 📜 Principais Arquivos
 
-LocalStorage
+### **index.html**
 
-📌 Principais Arquivos
-index.html
+Estrutura do player: capa, nome da música, botões e barra de progresso.
 
-Contém a estrutura do player:
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+    <div class="container">
+        <h4 id="titulo">Só as Melhores</h4>
 
-Título
+        <img id="capa" alt="imagem da musica">
+        <audio id="audio"></audio>
 
-Imagem da capa
+        <div id="abaixo-capa">
+            <div id="info">
+                <div id="musica">Nome da Música</div>
+                <div id="banda" class="cor-fraca">Nome da Banda</div>
+            </div>
+            <button id="like" class="botao" onclick="likeButtonClicked()">
+                <i class="bi bi-heart"></i>
+            </button>
+        </div>
 
-Elemento <audio>
+        <div id="barra-clicar">
+            <div id="barra">
+                <div id="progresso"></div>
+            </div>
+            <div id="time-box">
+                <div id="song-time">00:00</div>
+                <div id="total-time">00:00</div>
+            </div>
+        </div>
 
-Informações da música
+        <div id="botoes">
+            <button id="shuffle" class="botao">
+                <i class="bi bi-shuffle" onclick="shuffleButtonClicked()"></i>
+            </button>
 
-Botões de controle (play, pause, next, previous, shuffle, repeat)
+            <button id="previous" class="botao botao-navigate" onclick="musicaAnterior()">
+                <i class="bi bi-skip-start-fill"></i>
+            </button>
 
-Barra de progresso
+            <button id="play" class="botao botao-grande" onclick="togglePlayPause()">
+                <i class="bi bi-play-circle-fill"></i>
+            </button>
 
-style.css
+            <button id="next" class="botao botao-navigate" onclick="proximaMusica()">
+                <i class="bi bi-skip-end-fill"></i>
+            </button>
 
-Responsável pelo visual:
+            <button id="repeat" class="botao">
+                <i class="bi bi-repeat" onclick="repeatButtonClicked()"></i>
+            </button>
+        </div>
+    </div>
 
-Gradiente de fundo
+    <script src="script.js"></script>
+</body>
+</html>
+```
 
-Cores do Spotify
+---
 
-Botões com hover e destaque
+### **style.css**
 
-Tamanhos dos ícones
+Estilo inspirado no Spotify: gradiente verde → preto, botões grandes e interface centralizada.
 
-Barra de progresso animada
+```css
+body {
+    background: linear-gradient(to bottom, #1DB954, #191414);
+    height: 100vh;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-Layout centralizado
+button {
+    background-color: inherit;
+    color: inherit;
+    border: none;
+}
 
-script.js
+#capa {
+    width: 350px;
+    height: 350px;
+    border-radius: 8px;
+}
 
-Controla toda a lógica do player:
+#musica {
+    font-size: 1.7em;
+    font-weight: bolder;
+}
 
-▶️ Controle da música:
+#barra {
+    background-color: #88999C;
+    height: 3px;
+    width: 100%;
+    border-radius: 10px;
+}
 
-playSong()
+#progresso {
+    --progresso: 0%;
+    background-color: white;
+    height: 3px;
+    width: var(--progresso);
+    border-radius: 10px;
+}
 
-pauseSong()
+.botao-ativo {
+    color: rgb(67, 187, 67);
+}
+```
 
-togglePlayPause()
+---
 
-⏩ Navegação:
+### **script.js**
 
-proximaMusica()
+Toda a lógica do player: controle da música, likes, shuffle, repeat, progresso e playlist.
 
-musicaAnterior()
+```js
+const nomeMusica = document.getElementById("musica");
+const nomeBanda = document.getElementById("banda");
+const capa = document.getElementById("capa");
+const musica = document.getElementById("audio");
+const play = document.getElementById("play");
+const barra = document.getElementById("progresso");
 
-🔀 Aleatório:
-
-shuffleButtonClicked()
-
-shuffleArray()
-
-🔁 Repetição:
-
-repeatButtonClicked()
-
-❤️ Likes:
-
-Salvos no localStorage
-
-Mudança visual do ícone (bi-heart / bi-heart-fill)
-
-⏳ Progresso e tempo:
-
-atualizaProgresso()
-
-pularPara()
-
-toHHMMSS()
-
-updateTotalTime()
-
-📦 Como usar
-
-Faça o download/clonagem do repositório
-
-Coloque suas músicas em /songs (formato .mp4 ou .mp3)
-
-Coloque as capas correspondentes em /img
-
-Abra o index.html no navegador
-
-E pronto! O player iniciará automaticamente.
-
-🧩 Como adicionar novas músicas
-
-No arquivo script.js, adicione um objeto no mesmo formato:
-
-
-const novaMusica = {
-    nome: "Nome da Música",
-    banda: "Nome da Banda",
-    arquivo: "nome-do-arquivo",
+const numb = {
+    nome: "Numb",
+    banda: "Linkin Park",
+    arquivo: "numb",
     liked: false
 };
 
+let playlist = JSON.parse(localStorage.getItem("playlist")) 
+            ?? [numb];
 
-E inclua na playlist:
+let index = 0;
+let isPlaying = false;
+
+function iniciarMusica() {
+    const musicaAtual = playlist[index];
+    capa.src = `img/${musicaAtual.arquivo}.jpeg`;
+    nomeMusica.innerText = musicaAtual.nome;
+    nomeBanda.innerText = musicaAtual.banda;
+    musica.src = `songs/${musicaAtual.arquivo}.mp4`;
+}
+
+function playSong() {
+    play.querySelector(".bi").classList.replace("bi-play-circle-fill", "bi-pause-circle-fill");
+    musica.play();
+    isPlaying = true;
+}
+
+function pauseSong() {
+    play.querySelector(".bi").classList.replace("bi-pause-circle-fill", "bi-play-circle-fill");
+    musica.pause();
+    isPlaying = false;
+}
+
+function togglePlayPause() {
+    isPlaying ? pauseSong() : playSong();
+}
+
+musica.addEventListener("timeupdate", () => {
+    const progresso = (musica.currentTime / musica.duration) * 100;
+    barra.style.setProperty("--progresso", `${progresso}%`);
+});
+
+iniciarMusica();
+```
+
+---
+
+## ➕ Como adicionar novas músicas
+
+```js
+const novaMusica = {
+    nome: "Nome",
+    banda: "Artista",
+    arquivo: "nome-arquivo",
+    liked: false
+};
 
 playlist.push(novaMusica);
+```
 
-🟢 Melhorias Futuras (opcional)
+Coloque:
 
-Barra de volume
+* `songs/nome-arquivo.mp4`
+* `img/nome-arquivo.jpeg`
 
-Tema claro/escuro
 
-Busca de músicas
 
-Interface mais parecida com o Spotify real
 
-Animação da capa ao tocar música
 
-Equalizador visual
+É só pedir!

@@ -95,13 +95,7 @@ A barra funciona em dois sentidos:
 
 ---
 
-## 🔊 7. Controle de volume (se existir)
-
-O player ajusta o volume diretamente no objeto `Audio`, indo de 0 até 1.
-
----
-
-## 🔁 8. Reprodução automática da próxima faixa
+## 🔁 7. Reprodução automática da próxima faixa
 
 Quando a música termina, um evento `ended` é disparado e ativa automaticamente:
 
@@ -110,7 +104,7 @@ Quando a música termina, um evento `ended` é disparado e ativa automaticamente
 
 ---
 
-## 🖼️ 9. Atualização visual (UI)
+## 🖼️ 8. Atualização visual (UI)
 
 O script troca dinamicamente:
 
